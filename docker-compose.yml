@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  my-flask-app:
+    image: my-flask-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    volumes:
+      - .:/app
+
+  database:
+    image: database
+    environment:
+      MYSQL_ROOT_PASSWORD: 25102004****$
+      MYSQL_DATABASE: cloud
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./sql/cloud.sql:/docker-entrypoint-initdb.d/sql/cloud.sql
+#docker-compose up
